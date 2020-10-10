@@ -173,5 +173,16 @@ def print_n(n):
 					print(f"{front}/{mid}\\")
 				
 
-print_n(5)
+def Diffie_Hellman_cracker(p, g, A, B):
+	a, b = 1, 1
+	while (g**a)%p != A:
+		a+=1
+	while (g**b)%p != B:
+		b+=1
+	k = (g**(a*b))%p
+	return a,b,k
+
+print(Diffie_Hellman_cracker(11, 3, 4, 9))
+
+
 
