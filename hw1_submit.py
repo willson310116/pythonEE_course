@@ -108,7 +108,12 @@ def print_level_n_tree(n):
           mid = "*"*star_num + "|"*door + "*"*star_num
           print(f"{front}/{mid}\\")
 
+order = input("R for run, Q for quit\n >")
+while order.lower() != "q":
+	x = int(input("How many level?\n> "))
+	print_level_n_tree(x)
+	order = input("R for run, Q for quit\n >")
 
 
 # def Diffie_Hellman_cracker(p, g, A, B):
-    
+   
