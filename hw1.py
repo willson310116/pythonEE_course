@@ -4,7 +4,7 @@ from math import floor
 # submit version 
 
 def print_level_two_tree():
-  maxlen = find_middle(2)[1]
+  maxlen = find_max(2)
   for i in range(7):
     if i < 3:  #i=0~2
       curlen = 2*i+3
@@ -28,7 +28,7 @@ def find_middle(n):
   midlen = (maxlen+1)/2
   diff = 3
   if n == 1:
-    return int(midlen),int(maxlen)
+    return int(midlen)
   else:
     # index += 1
     while index < n:
@@ -38,20 +38,36 @@ def find_middle(n):
       first_len = maxlen + diff*2
       maxlen = first_len + (layers-1)*2
       midlen = (maxlen+1)/2
-      # print(maxlen)
-  # response = f"""
-  # The first return value is the mid_len {int(midlen)},
-  # and the second is the maxlen {int(maxlen)}
-  # I need to use maxlen length in other functions, sorry for that.
-  # """
-  # print(response)
-  return int(midlen), int(maxlen)
+  
+  return int(midlen)
+
+def find_max(n):
+  index = 1
+  layers = 3
+  first_len = 1+2
+  maxlen = first_len + (layers-1)*2
+  midlen = (maxlen+1)/2
+  diff = 3
+  if n == 1:
+    return int(maxlen)
+  else:
+    # index += 1
+    while index < n:
+      layers+=1
+      index+=1
+      diff = floor(index/2)+2
+      first_len = maxlen + diff*2
+      maxlen = first_len + (layers-1)*2
+      midlen = (maxlen+1)/2
+
+  return int(maxlen)
 
 def print_level_n_tree(n):
   """
   This function will print a n level christmas tree.
   """
-  midlen, maxlen = find_middle(n)
+  midlen = find_middle(n)
+  maxlen = find_max(n)
   for i in range(1,n+1):  # 4 = 3+1 (N+1)
     # 每一大層的設定
     layers = i+2
@@ -129,11 +145,11 @@ def Diffie_Hellman_cracker(p, g, A, B):
   k = (g**(a*b))%p
   return a,b,k
 
-response = f"""
-  For function find_middle(n), I need to use maxlen length in other functions, so
-  the first return value is the midlen, and the second return value is the maxlen.
-  For example when executing find_middle(2), it will return (10, 19),
-  and 10 is the midlen which is the answer of find_middle() while 19 is the maxlen.
-  """
-print(response)
+# response = f"""
+#   For function find_middle(n), I need to use maxlen length in other functions, so
+#   the first return value is the midlen, and the second return value is the maxlen.
+#   For example when executing find_middle(2), it will return (10, 19),
+#   and 10 is the midlen which is the answer of find_middle() while 19 is the maxlen.
+#   """
+# print(response)
 
